@@ -11,7 +11,7 @@ class Navbar extends Component {
     this.props.logoutUser();
   };
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const isAuthenticated = this.props.auth.isAuthenticated;
     const isAuthLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
