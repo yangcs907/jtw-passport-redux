@@ -6,6 +6,8 @@ class Info extends Component {
 
   render() {
     const user = this.props.auth.user;
+    const userInfo = this.props.auth.userInfo;
+    const webTokenInfo = this.props.auth.webTokenInfo;
     let content;
         content = (
           <div>
@@ -14,13 +16,13 @@ class Info extends Component {
               style={{fontSize:"35px",color:"rgba(255,255,255,0.9)"}}
               >
               Welcome { user.name }
-              <br />
-              Id: { user.id }
-              <br />
-              In at: { user.iat}
-              <br />
-              Exp at: { user.exp }
             </p>
+            <p>Here is some info...</p>
+            <p>Email: { userInfo.email }</p>
+            <p>Password: { userInfo.password }</p>
+            <div style={{wordWrap:"break-word"}}>
+            <p>Web Token: <br></br>{ webTokenInfo.token }</p>
+            </div>
           </div>
         );
     return (

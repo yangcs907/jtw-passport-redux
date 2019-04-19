@@ -1,10 +1,11 @@
 import isEmpty from '../validation/emptyCheck.js';
-import { SET_CURRENT_USER, SET_CURRENT_USER_INFO } from '../Actions/types.js';
+import { SET_CURRENT_USER, SET_CURRENT_USER_INFO, SHOW_WEB_TOKEN } from '../Actions/types.js';
 
 const initialState = {
   isAuthenticated: false,
   user: {},
-  userInfo: {}
+  userInfo: {},
+  webTokenInfo: {}
 };
 
 export default function(state = initialState, action) {
@@ -20,6 +21,12 @@ export default function(state = initialState, action) {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
         userInfo: action.payload
+      }
+    case SHOW_WEB_TOKEN:
+      return {
+        ...state,
+        isAuthenticated: !isEmpty(action.payload),
+        webTokenInfo: action.payload
       }
     default:
       return state;

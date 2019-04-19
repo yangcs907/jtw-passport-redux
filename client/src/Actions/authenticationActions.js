@@ -1,7 +1,7 @@
 import axios from 'axios';
 import setAuthWebToken from '../utils/setAuthWebToken.js';
 import jwt_decode from 'jwt-decode';
-import { GET_ERROR_MESSAGES, SET_CURRENT_USER } from './types.js';
+import { GET_ERROR_MESSAGES, SET_CURRENT_USER, SET_CURRENT_USER_INFO, SHOW_WEB_TOKEN } from './types.js';
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
   axios
@@ -32,6 +32,8 @@ export const loginUser = (userData) => (dispatch) => {
       const decodedToken = jwt_decode(webToken);
       // set current user
       dispatch(setCurrentUser(decodedToken));
+      dispatch(setCurrentUserInfo(userData));
+      dispatch(showWebToken(res.data));
     })
     .catch(err =>
       dispatch({
@@ -47,6 +49,20 @@ export const setCurrentUser = (decodedToken) => {
     payload: decodedToken
   }
 };
+
+export const setCurrentUserInfo = (info) => {
+  return {
+    type: SET_CURRENT_USER_INFO,
+    payload: info
+  }
+};
+
+export const showWebToken = (token) => {
+  return {
+    type: SHOW_WEB_TOKEN,
+    payload: token
+  }
+}
 
 // log out user
 export const logoutUser = () => (dispatch) => {
