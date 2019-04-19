@@ -1,7 +1,7 @@
 {
-  "name": "socialconnect",
+  "name": "jwt-passport-redux",
   "version": "1.0.0",
-  "description": "cool social network app",
+  "description": "boilerplate for authentication with redux",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
